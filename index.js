@@ -30,13 +30,14 @@ async function run(){
       const services = await cursor.limit(3).toArray();
       res.send(services);
     });
-
-    app.get('/services/all', async(req, res)=>{
-      const query = {}
-      const cursor = serviceCollection.find(query);
-      const servicesAll = await cursor.toArray();
-      res.send(servicesAll);
-    });
+     
+    app.get("/services/all", async (req, res) => {
+       const query = {};
+       const cursor = serviceCollection.find(query);
+       const servicesAll = await cursor.toArray();
+       res.send(servicesAll);
+     });
+   
   }
 
   finally{
