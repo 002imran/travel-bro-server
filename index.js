@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 
+const port = process.env.PORT || 5000;
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 5000;
 
 
 /*****middle wares*****/
@@ -33,29 +33,7 @@ async function run(){
       res.send(services);
     });
      
-    // app.get("/services", async(req, res) => {
-    //   console.log(req.query);
-    //   let query = {};
-    //   const {limit} = req.query;
-    //   if(limit){
-    //     const cursor = serviceCollection.find({}).sort({date: -1}).limit(2);
-    //     // const services = await cursor.toArray();
-    //   }
-    //   else{
-
-    //     const cursor = serviceCollection.find(query);
-    //     res.send(services);
-    //   }
-    //   const services = await cursor.toArray();
-    // });
-
-
-    // app.get("/services/all", async (req, res) => {
-    //    const query = {};
-    //    const cursor = serviceCollection.find(query);
-    //    const servicesAll = await cursor.toArray();
-    //    res.send(servicesAll);
-    //  });
+    
     app.get("/services/all", async (req, res) => {
        const query = {};
        const cursor = serviceCollection.find(query);
