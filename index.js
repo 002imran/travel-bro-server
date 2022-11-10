@@ -24,6 +24,8 @@ const client = new MongoClient(uri, {
 async function run(){
   try{
     const serviceCollection = client.db('travelBro').collection('services');
+    const oldTripCollection = client.db('travelBro').collection('oldTrip');
+
     app.get('/services', async(req, res)=>{
       const query = {}
       const cursor = serviceCollection.find(query);
@@ -68,6 +70,12 @@ async function run(){
       res.send(service);
     });
 
+     app.get("/oldTrip", async (req, res) => {
+       const query = {};
+       const cursor = oldTripCollection.find(query);
+       const oldTrip = await cursor.toArray();
+       res.send(oldTrip);
+     });
 
      
    
